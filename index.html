@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030316">
+  <title>AZEIOUS — Deep Galaxy Music Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars stars-one" aria-hidden="true"></div>
+  <div class="stars stars-two" aria-hidden="true"></div>
+  <div class="nebula nebula-one" aria-hidden="true"></div>
+  <div class="nebula nebula-two" aria-hidden="true"></div>
+
+  <aside class="sidebar">
+    <div class="logo"><span class="logo-orbit"><i class="fa-solid fa-headphones"></i></span><span>AZEIOUS</span></div>
+    <nav>
+      <a href="#" class="active" data-view="all"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#" data-view="all"><i class="fa-solid fa-compass"></i> Discover</a>
+      <a href="#" id="favoritesNav"><i class="fa-solid fa-heart"></i> Favorites <span id="favoriteCount">0</span></a>
+      <a href="#" id="recentNav"><i class="fa-solid fa-clock-rotate-left"></i> Recently Played</a>
+    </nav>
+
+    <div class="playlist-section">
+      <div class="playlist-title"><span>My Playlists</span><button id="addPlaylist" type="button" aria-label="Create playlist"><i class="fa-solid fa-plus"></i></button></div>
+      <div id="playlistNames">
+        <button class="side-playlist active" data-playlist="All Songs"><i class="fa-solid fa-music"></i><span>All Songs</span><b id="allCount">6</b></button>
+        <button class="side-playlist" data-playlist="Favorites"><i class="fa-solid fa-heart"></i><span>Favorites</span><b id="sideFavCount">0</b></button>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Search songs, artists or categories..."></div>
+      <div class="profile"><div class="avatar">A</div><div><strong>Ayesha</strong><small>Music Explorer</small></div></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <span class="small-title">DEEP GALAXY • YOUR MUSIC</span>
+        <h1>Let the music<br><span>take you beyond.</span></h1>
+        <p>Explore your songs, build playlists and drift through a deep-space listening experience.</p>
+        <button class="explore-btn" id="startListening"><i class="fa-solid fa-play"></i> Start Listening</button>
+      </div>
+      <div class="hero-planet" aria-hidden="true"><div class="planet-ring"></div><div class="planet"><i class="fa-solid fa-music"></i></div></div>
+    </section>
+
+    <section class="categories">
+      <div class="section-header"><div><span class="eyebrow">EXPLORE</span><h2>Browse Categories</h2></div><span id="songCount">6 songs</span></div>
+      <div class="category-list">
+        <button class="category active" data-category="All">All</button>
+        <button class="category" data-category="Pop">Pop</button>
+        <button class="category" data-category="Rock">Rock</button>
+        <button class="category" data-category="Hip Hop">Hip Hop</button>
+        <button class="category" data-category="Electronic">Electronic</button>
+        <button class="category" data-category="Chill">Chill</button>
+      </div>
+    </section>
+
+    <section class="songs-section">
+      <div class="section-header"><div><span class="eyebrow">YOUR LIBRARY</span><h2 id="listTitle">Popular Songs</h2></div><span id="queueInfo">6 tracks</span></div>
+      <div id="songList" class="song-list"></div>
+      <div id="emptyState" class="empty-state hidden"><i class="fa-solid fa-meteor"></i><h3>No songs found</h3><p>Try another search or category.</p></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <div class="music-player">
+    <div class="current-song">
+      <div class="album-cover" id="playerCover"><i class="fa-solid fa-music"></i></div>
+      <div class="current-info"><h4 id="currentTitle">No Song Playing</h4><p id="currentArtist">Select a song</p></div>
+      <button id="favoriteBtn" class="icon-btn" type="button" aria-label="Favorite song"><i class="fa-regular fa-heart"></i></button>
+    </div>
+
+    <div class="player-controls">
+      <div class="control-buttons">
+        <button id="shuffleBtn" class="control-btn" title="Shuffle"><i class="fa-solid fa-shuffle"></i></button>
+        <button id="prevBtn" class="control-btn" title="Previous"><i class="fa-solid fa-backward-step"></i></button>
+        <button id="playBtn" class="play-btn" title="Play"><i class="fa-solid fa-play"></i></button>
+        <button id="nextBtn" class="control-btn" title="Next"><i class="fa-solid fa-forward-step"></i></button>
+        <button id="repeatBtn" class="control-btn" title="Repeat"><i class="fa-solid fa-repeat"></i></button>
+      </div>
+      <div class="progress-container"><span id="currentTime">0:00</span><input id="progressBar" type="range" min="0" max="100" value="0"><span id="duration">0:00</span></div>
+    </div>
+
+    <div class="volume-control"><i id="volumeIcon" class="fa-solid fa-volume-high"></i><input id="volumeBar" type="range" min="0" max="1" step="0.01" value="0.8"></div>
+  </div>
+
+  <audio id="audioPlayer" preload="metadata"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
